@@ -30,7 +30,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18'
+        node-version: nodejs14.x
 
     - name: Install Serverless Framework
       run: npm install -g serverless
