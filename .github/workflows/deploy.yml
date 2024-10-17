@@ -37,7 +37,7 @@ jobs:
 
     - name: Deploy to AWS
       env:
-        SERVERLESS_ACCESS_KEY: c59646c5-56f6-4577-8e1a-5420cf377044  # Hardcoded access key
+        SERVERLESS_ACCESS_KEY: AK0O7eNtGPNrGn29QOoROH6eaKy5vzDEXEHX8zuHmXsdl  # Hardcoded access key
       run: |
         serverless deploy --stage dev
 
