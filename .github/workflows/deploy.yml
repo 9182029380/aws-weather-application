@@ -30,12 +30,15 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18'  # Updated Node.js version to 18
+        node-version: '18'
 
     - name: Install Serverless Framework
       run: npm install -g serverless
 
     - name: Deploy to AWS
+      env:
+        SERVERLESS_ACCESS_KEY: c59646c5-56f6-4577-8e1a-5420cf377044  # Hardcoded access key
       run: |
-        serverless config credentials --provider aws --key AKIASK5MCSQEZJ42R4ZV --secret 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
         serverless deploy --stage dev
+
+
