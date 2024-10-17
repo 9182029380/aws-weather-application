@@ -1,0 +1,41 @@
+name: Deploy Serverless Application
+
+on:
+  push:
+    branches:
+      - main  # or your default branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+
+    - name: Cache Maven packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+
+    - name: Build with Maven
+      run: mvn clean package
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install Serverless Framework
+      run: npm install -g serverless
+
+    - name: Deploy to AWS
+      run: |
+        serverless config credentials --provider aws --key AKIASK5MCSQEZJ42R4ZV --secret 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
+        serverless deploy --stage dev
