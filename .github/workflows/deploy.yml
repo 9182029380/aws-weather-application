@@ -37,8 +37,7 @@ jobs:
 
     - name: Deploy to AWS
       env:
-        AWS_ACCESS_KEY_ID: AKIASK5MCSQEZJ42R4ZV  # Using GitHub Secrets
-        AWS_SECRET_ACCESS_KEY: 3g+oR0vdrd14/lhwjAeWJWDm6ak7bHeXABFw7x8g  # Using GitHub Secrets
+        
         SERVERLESS_ACCESS_KEY: AK0O7eNtGPNrGn29QOoROH6eaKy5vzDEXEHX8zuHmXsdl  # Your Serverless Access Key if needed
       run: |
         serverless deploy --stage dev
